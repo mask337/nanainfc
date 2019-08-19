@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+import datetime
 
 
 
@@ -16,9 +18,16 @@ class Choice(models.Model):
 class Permission(models.Model):
     user_id = models.IntegerField()
     locker_id = models.IntegerField()
+    add_date = models.DateTimeField('permission added',auto_now_add=True)
+
+    def __str__(self):
+        return self.user_id
+    def was_added_recently(self):
+        return self.add_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Address(models.Model):
     locker_id = models.IntegerField()
     locker_address = models.IntegerField()
-    
+    def __str__(self):
+        return self.locker_id
 # Create your models here.
