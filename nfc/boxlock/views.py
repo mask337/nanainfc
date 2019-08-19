@@ -4,4 +4,7 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
-# Create your views here.
+
+def status(request,user_id):
+    return HttpResponse("Here is the list of lockers you have the permission of.")
+
