@@ -1,0 +1,10 @@
+{% if latest_list %}
+    <ul>
+    {% for permission in latest_list %}
+        <li><a href="{% url 'detail' permission.id %}">{{ permission.add_date }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No permission list.</p>
+{% endif %}
+
